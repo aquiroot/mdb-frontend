@@ -16,11 +16,22 @@ export const Dashboard = () => {
 		});
 	}, [dispatch]);
 
+	// TODO: agregar paginacion
+
 	return (
 		<div className="container">
 			<div className="row row-col-1">
 				{isLoading ? (
-					<h3>Wait, loading...</h3>
+					<div className="d-flex justify-content-center">
+						<button className="btn btn-primary" type="button" disabled>
+							<span
+								className="spinner-border spinner-border-sm"
+								role="status"
+								aria-hidden="true"
+							></span>
+							Loading...
+						</button>
+					</div>
 				) : (
 					movies.map((movie) => <Card key={movie.id} movie={movie} />)
 				)}

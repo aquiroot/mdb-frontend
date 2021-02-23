@@ -7,6 +7,8 @@ export const NavBar = () => {
 	const [formValues, handleInputChange] = useForm();
 	const dispatch = useDispatch();
 
+	// TODO: isLoading true mientras carga las busquedas
+
 	const { search } = formValues;
 
 	// TODO: validar campo vacio
