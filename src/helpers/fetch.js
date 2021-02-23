@@ -1,17 +1,24 @@
+const key = process.env.REACT_APP_KEY;
+const baseUrl = process.env.REACT_APP_URL;
+
+const page = 1;
+const language = 'es-ES';
+
 const fetchRecommend = async () => {
 	return await fetch(
-		'https://api.themoviedb.org/3/discover/movie?api_key=edf47991920357e9f8c81335d3f6dc59&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
+		`${baseUrl}discover/movie?api_key=${key}&language=${language}S&sort_by=popularity.desc&page=${page}`
 	)
 		.then((res) => res.json())
 		.then((data) => {
 			const movies = data.results;
+			console.log(movies);
 			return movies;
 		});
 };
 
 const fetchTitle = async (query) => {
 	return await fetch(
-		`https://api.themoviedb.org/3/search/movie?api_key=edf47991920357e9f8c81335d3f6dc59&query=${query}`
+		`${baseUrl}search/movie?api_key=${key}&query=${query}&language=${language}&page=${page}`
 	)
 		.then((res) => res.json())
 		.then((data) => {
