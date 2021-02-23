@@ -1,15 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from '../../hook/useForm';
-import { fetchSearch } from '../../helpers/fetch';
+import { startGetSearchTitle } from '../../actions/moviesAction';
 
 export const NavBar = () => {
 	const [formValues, handleInputChange] = useForm();
+	const dispatch = useDispatch();
 
 	const { search } = formValues;
 
+	// TODO: validar campo vacio
 	const handleSearch = (e) => {
 		e.preventDefault();
-		fetchSearch(search).then((res) => console.log(res));
+		dispatch(startGetSearchTitle(search));
 	};
 
 	return (
